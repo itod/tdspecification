@@ -10,6 +10,7 @@
 #import "TDSpecification.h"
 #import "GenderSpecification.h"
 #import "AgeSpecification.h"
+#import "Person.h"
 
 @interface TDSpecificationTests : XCTestCase
 
@@ -34,7 +35,40 @@
 //    }];
 //}
 
-- (void)testSubsumes_Combat {
+- (void)testSatisfies_Gender {
+    id male = [GenderSpecification male];
+    id bob = [Person personWithGender:PersonGenderMale age:40];
+    
+    XCTAssert([male isSatisfiedBy:bob]);
+}
+
+- (void)testNotSatisfies_Gender {
+    id female = [GenderSpecification female];
+    id bob = [Person personWithGender:PersonGenderMale age:40];
+    
+    XCTAssert(![female isSatisfiedBy:bob]);
+}
+
+- (void)testSatisfies_Age {
+    id neg1 = [AgeSpecification specificationWithAge:-1];
+    id _0 = [AgeSpecification specificationWithAge:0];
+    id _1 = [AgeSpecification specificationWithAge:1];
+    id _18 = [AgeSpecification specificationWithAge:18];
+    id _39 = [AgeSpecification specificationWithAge:39];
+    id _40 = [AgeSpecification specificationWithAge:40];
+    id _41 = [AgeSpecification specificationWithAge:41];
+    id bob = [Person personWithGender:PersonGenderMale age:40];
+    
+    XCTAssert([neg1 isSatisfiedBy:bob]); // ??
+    XCTAssert([_0 isSatisfiedBy:bob]);
+    XCTAssert([_1 isSatisfiedBy:bob]);
+    XCTAssert([_18 isSatisfiedBy:bob]);
+    XCTAssert([_39 isSatisfiedBy:bob]);
+    XCTAssert([_40 isSatisfiedBy:bob]);
+    XCTAssert(![_41 isSatisfiedBy:bob]);
+}
+
+- (void)testSubsumes_AND {
     id male = [GenderSpecification male];
     id eighteen = [AgeSpecification specificationWithAge:18];
     id combat = [male and:eighteen];
@@ -47,20 +81,14 @@
     XCTAssert(![eighteen subsumes:male]);
 }
 
-- (void)testSubsumes_NotCombat {
+- (void)testSatisfies_AND {
     id male = [GenderSpecification male];
-    id female = [GenderSpecification female];
     id eighteen = [AgeSpecification specificationWithAge:18];
-    id combat = [[female not] and:eighteen];
+    id combat = [male and:eighteen];
     
-    XCTAssert([combat subsumes:male]);
-    XCTAssert([combat subsumes:eighteen]);
-    XCTAssert(![female subsumes:combat]);
-    XCTAssert(![male subsumes:combat]);
-    XCTAssert(![eighteen subsumes:combat]);
-    XCTAssert(![female subsumes:eighteen]);
-    XCTAssert(![male subsumes:eighteen]);
-    XCTAssert(![eighteen subsumes:male]);
+    id bob = [Person personWithGender:PersonGenderMale age:20];
+    
+    XCTAssert([combat isSatisfiedBy:bob]);
 }
 
 @end

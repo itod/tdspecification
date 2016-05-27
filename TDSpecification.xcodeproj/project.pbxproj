@@ -13,6 +13,7 @@
 		D3F3259A1CF7E739009CB29D /* TDSpecification.m in Sources */ = {isa = PBXBuildFile; fileRef = D3F325981CF7E739009CB29D /* TDSpecification.m */; };
 		D3F3259D1CF7FB2C009CB29D /* GenderSpecification.m in Sources */ = {isa = PBXBuildFile; fileRef = D3F3259C1CF7FB2C009CB29D /* GenderSpecification.m */; };
 		D3F325A01CF7FD18009CB29D /* AgeSpecification.m in Sources */ = {isa = PBXBuildFile; fileRef = D3F3259F1CF7FD18009CB29D /* AgeSpecification.m */; };
+		D3F325A31CF89461009CB29D /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = D3F325A21CF89461009CB29D /* Person.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,8 @@
 		D3F3259C1CF7FB2C009CB29D /* GenderSpecification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenderSpecification.m; sourceTree = "<group>"; };
 		D3F3259E1CF7FD18009CB29D /* AgeSpecification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgeSpecification.h; sourceTree = "<group>"; };
 		D3F3259F1CF7FD18009CB29D /* AgeSpecification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgeSpecification.m; sourceTree = "<group>"; };
+		D3F325A11CF89461009CB29D /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		D3F325A21CF89461009CB29D /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		D3F5C7FF1CF7E61400D71A80 /* TDSpecification.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TDSpecification.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3F5C8041CF7E61400D71A80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,6 +69,8 @@
 				D3F3259C1CF7FB2C009CB29D /* GenderSpecification.m */,
 				D3F3259E1CF7FD18009CB29D /* AgeSpecification.h */,
 				D3F3259F1CF7FD18009CB29D /* AgeSpecification.m */,
+				D3F325A11CF89461009CB29D /* Person.h */,
+				D3F325A21CF89461009CB29D /* Person.m */,
 				D3F325901CF7E63F009CB29D /* Info.plist */,
 			);
 			path = TDSpecificationTests;
@@ -208,6 +213,7 @@
 			files = (
 				D3F3259D1CF7FB2C009CB29D /* GenderSpecification.m in Sources */,
 				D3F3258F1CF7E63F009CB29D /* TDSpecificationTests.m in Sources */,
+				D3F325A31CF89461009CB29D /* Person.m in Sources */,
 				D3F325A01CF7FD18009CB29D /* AgeSpecification.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

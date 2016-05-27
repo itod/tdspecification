@@ -7,18 +7,19 @@
 //
 
 #import "GenderSpecification.h"
+#import "Person.h"
 
 @implementation GenderSpecification {
-    NSInteger _flag;
+    NSInteger _gender;
 }
 
 + (instancetype)female {
-    return [[[GenderSpecification alloc] initWithFlag:0] autorelease];
+    return [[[GenderSpecification alloc] initWithGender:PersonGenderFemale] autorelease];
 }
 
 
 + (instancetype)male {
-    return [[[GenderSpecification alloc] initWithFlag:1] autorelease];
+    return [[[GenderSpecification alloc] initWithGender:PersonGenderMale] autorelease];
 }
 
 
@@ -28,10 +29,10 @@
 }
 
 
-- (instancetype)initWithFlag:(NSInteger)flag {
+- (instancetype)initWithGender:(NSInteger)gender {
     self = [super init];
     if (self) {
-        _flag = flag;
+        _gender = gender;
     }
     return self;
 }
@@ -39,8 +40,20 @@
 
 - (BOOL)isEqual:(id)obj {
     BOOL res = self == obj;
-    NSAssert((res && self == obj && _flag == ((GenderSpecification *)obj)->_flag) || (!res && self != obj), @"");
+    NSAssert((res && self == obj && _gender == ((GenderSpecification *)obj)->_gender) || (!res && self != obj), @"");
     return res;
+}
+
+
+- (BOOL)isSatisfiedBy:(id)obj {
+    BOOL result = NO;
+    
+    if ([obj isKindOfClass:[Person class]]) {
+        Person *p = (id)obj;
+        result = p.gender == _gender;
+    }
+    
+    return result;
 }
 
 @end

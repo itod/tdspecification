@@ -7,6 +7,7 @@
 //
 
 #import "AgeSpecification.h"
+#import "Person.h"
 
 static NSMutableDictionary *sCache = nil;
 
@@ -51,6 +52,18 @@ static NSMutableDictionary *sCache = nil;
     BOOL res = self == obj;
     NSAssert((res && self == obj && _age == ((AgeSpecification *)obj)->_age) || (!res && self != obj), @"");
     return res;
+}
+
+
+- (BOOL)isSatisfiedBy:(id)obj {
+    BOOL result = NO;
+    
+    if ([obj isKindOfClass:[Person class]]) {
+        Person *p = (id)obj;
+        result = p.age >= _age;
+    }
+    
+    return result;
 }
 
 @end

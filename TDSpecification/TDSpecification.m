@@ -149,7 +149,7 @@
 }
 
 
-// This impl only sufficient if you don't use OR or NOT Specs
+// This impl only sufficient if you ONLY USE AND Specs and DON'T use OR or NOT Specs.
 - (BOOL)subsumes:(TDSpecification *)otherParent {
     if ([otherParent isKindOfClass:[TDCompositeSpecification class]]) {
         for (TDSpecification *otherChild in otherParent.leafSpecifications) {

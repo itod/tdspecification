@@ -10,6 +10,9 @@
 
 @interface TDSpecification : NSObject
 
++ (instancetype)booleanTrue;
++ (instancetype)booleanFalse;
+
 - (TDSpecification *)and:(TDSpecification *)rhs;
 - (TDSpecification *)or:(TDSpecification *)rhs;
 - (TDSpecification *)not;

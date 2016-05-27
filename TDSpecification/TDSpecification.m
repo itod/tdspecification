@@ -106,7 +106,40 @@
 
 @end
 
+@interface TDTrueSpecification : TDSpecification
+
+@end
+
+@implementation TDTrueSpecification
+
+- (BOOL)isSatisfiedBy:(id)obj { return YES; }
+
+@end
+
+@interface TDFalseSpecification : TDSpecification
+
+@end
+
+@implementation TDFalseSpecification
+
+- (BOOL)isSatisfiedBy:(id)obj { return NO; }
+
+@end
+
+static TDSpecification *sTrueSpec = nil;
+static TDSpecification *sFalseSpec = nil;
+
 @implementation TDSpecification
+
++ (void)initialize {
+    if ([TDSpecification class] == self) {
+        sTrueSpec = [[TDTrueSpecification alloc] init];
+        sFalseSpec = [[TDFalseSpecification alloc] init];
+    }
+}
+
++ (instancetype)booleanTrue { return sTrueSpec; }
++ (instancetype)booleanFalse { return sFalseSpec; }
 
 - (void)dealloc {
     self.leafSpecifications = nil;

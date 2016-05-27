@@ -35,14 +35,30 @@
 //}
 
 - (void)testSubsumes_Combat {
-    TDSpecification *male = [GenderSpecification male];
-    TDSpecification *eighteen = [AgeSpecification specificationWithAge:18];
-    TDSpecification *combat = [male and:eighteen];
+    id male = [GenderSpecification male];
+    id eighteen = [AgeSpecification specificationWithAge:18];
+    id combat = [male and:eighteen];
     
     XCTAssert([combat subsumes:male]);
     XCTAssert([combat subsumes:eighteen]);
     XCTAssert(![male subsumes:combat]);
     XCTAssert(![eighteen subsumes:combat]);
+    XCTAssert(![male subsumes:eighteen]);
+    XCTAssert(![eighteen subsumes:male]);
+}
+
+- (void)testSubsumes_NotCombat {
+    id male = [GenderSpecification male];
+    id female = [GenderSpecification female];
+    id eighteen = [AgeSpecification specificationWithAge:18];
+    id combat = [[female not] and:eighteen];
+    
+    //XCTAssert([combat subsumes:male]);
+    XCTAssert([combat subsumes:eighteen]);
+    XCTAssert(![female subsumes:combat]);
+    XCTAssert(![male subsumes:combat]);
+    XCTAssert(![eighteen subsumes:combat]);
+    XCTAssert(![female subsumes:eighteen]);
     XCTAssert(![male subsumes:eighteen]);
     XCTAssert(![eighteen subsumes:male]);
 }

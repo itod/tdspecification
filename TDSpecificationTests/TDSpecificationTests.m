@@ -53,7 +53,7 @@
     id eighteen = [AgeSpecification specificationWithAge:18];
     id combat = [[female not] and:eighteen];
     
-    //XCTAssert([combat subsumes:male]);
+    XCTAssert([combat subsumes:male]);
     XCTAssert([combat subsumes:eighteen]);
     XCTAssert(![female subsumes:combat]);
     XCTAssert(![male subsumes:combat]);

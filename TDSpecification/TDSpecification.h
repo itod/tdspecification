@@ -12,6 +12,7 @@
 
 + (instancetype)booleanTrue;
 + (instancetype)booleanFalse;
++ (instancetype)boolean:(BOOL)yn;
 
 - (TDSpecification *)and:(TDSpecification *)rhs;
 - (TDSpecification *)or:(TDSpecification *)rhs;

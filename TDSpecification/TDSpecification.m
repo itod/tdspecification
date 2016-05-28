@@ -140,6 +140,7 @@ static TDSpecification *sFalseSpec = nil;
 
 + (instancetype)booleanTrue { return sTrueSpec; }
 + (instancetype)booleanFalse { return sFalseSpec; }
++ (instancetype)boolean:(BOOL)yn { return yn ? sTrueSpec : sFalseSpec; }
 
 - (void)dealloc {
     self.leafSpecifications = nil;
